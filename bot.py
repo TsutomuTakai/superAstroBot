@@ -17,9 +17,10 @@ def updUsers():
 
 def tenMinuteThread():
     while 1:
+        print('Thread 1')
         collabUsers = updUsers()
         search = "#astrominibr"
-        numberOfTweets = 500
+        numberOfTweets = 50
         #print(collabUsers)
         for tweet in tweepy.Cursor(api.search, search).items(numberOfTweets):
             #print(tweet.user.id in collabUsers, tweet.user.id)
@@ -37,19 +38,21 @@ def tenMinuteThread():
         for tweet in tweepy.Cursor(api.search, "apod").items(50):
             if(tweet.user.id == "8295072"):
                 try:
-                    tweet.retweet()
+                    nFtweet.retweet()
                 except tweepy.TweepError as e:
                     print(e.reason)
                 except StopIteration:
                     break
 
-        sleep(1800)
+        sleep(600)
     
 
 def thirtyMinuteThread():
-    tweetDB =getTDB()
+    #print ('hey')
+    tweetDB = getTDB()
+    print(len(tweetDB))
     while 1:
-        
+        print('Thread 2')
         #print(tweetDB)
         if( len(tweetDB) == 0):
             tweetDB =getTDB()
@@ -60,7 +63,7 @@ def thirtyMinuteThread():
             file = 'img/' + tweetDB[index][1]
             api.update_with_media(file, status=tweetDB[index][0])
         tweetDB.pop(index)
-        sleep(3600)
+        sleep(13500)
 
 def getTDB():
     csv.register_dialect('myDialect',
@@ -89,5 +92,3 @@ except:
 ##
 ##while 1:
 ##    pass
-
-
