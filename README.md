@@ -51,6 +51,12 @@ After that to put some tweets in the account simply open "teste.txt" and write y
 Hey I just met you and this is crazy, so get out of my garden or you wont leave here in One Piece; smile.gif
 ```
 
+If you dont want a image in your tweet put an extra ";" after the tweet text
+
+```
+You are young, life has been kind to you;;
+```
+
 As I said it before, its way too simple...
 
 
